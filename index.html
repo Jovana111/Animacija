@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Animacija</title>
+
+    <style>
+        #main-container {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            margin: 80px auto;
+            perspective: 400px;
+            text-align: center;
+
+            background-color: #050210;
+        }
+
+        #krug {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            left: 150px;
+            top: 150px;
+            margin: 0 auto;
+            border-radius: 100%;
+            background: linear-gradient(#fb5dad, #55fb9f, #b97aff);
+            transform: rotate3d(0, 0, 1, 365deg);
+
+            animation-name: animacija-kruga;
+            animation-duration: 1.5s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        #krug::before {
+            content: ' ';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            left: 0px;
+            border-radius: 100%;
+            background: linear-gradient(#fb5dad, #55fb9f, #b97aff);
+            filter: blur(50px);
+            transform: rotate3d(0, 0, 1, 365deg);
+
+            animation-name: animacija-kruga;
+            animation-duration: 1.5s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        #krug2 {
+            width: 250px;
+            height: 250px;
+            border-radius: 100%;
+            background: #050210;
+            filter: brightness(1.3);
+            position: absolute;
+            top: 175px;
+            left: 175px;
+        }
+
+        #krug2::after {
+            content: ' ';
+            width: 250px;
+            height: 250px;
+            border-radius: 100%;
+            position: absolute;
+            background: #050210;
+            filter: brightness(2);
+            transform: translate(0, 0);
+            top: 0px;
+            left: 0px;
+            
+            animation-name: moja-animacija;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            /*animation-timing-function: ease-in-out;*/
+            animation-timing-function: cubic-bezier(1, 1, 0, 0);
+
+        }
+
+        @keyframes moja-animacija {
+            0% {
+                width: 0px;
+                height: 0px;
+                transform: translateX(125px) translateY(125px);
+            }
+
+            100% {
+                width: 250px;
+                height: 250px;
+                transform: translateX(0px) translateY(0px);
+            }
+        }
+
+        @keyframes animacija-kruga {
+            0% {
+                transform: rotate3d(0, 0, 1, 0deg);
+            }
+
+            100% {
+                transform: rotate3d(0, 0, 1, 360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main-container">
+        <a id="krug" href="#"></a>
+        <a id="krug2" href="#"></a>
+    </div>
+</body>
+</html>
